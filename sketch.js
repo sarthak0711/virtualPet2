@@ -1,6 +1,6 @@
 //Create variables here
-var dogImg,dogImgHappy;
-var dog, happyDog, foodS, foodStock,db;
+var dogImg,dogImgHappy,feed,addFood;
+var dog, happyDog, foodS, foodStock,db,lastFed;
 
 function preload()
 {
@@ -16,10 +16,13 @@ function preload()
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(800, 800);
   
   dog=createSprite(250,250,10,10);
   dog.addImage(dogImg);
+
+  feed=createButton("Feed the dog")
+  feed.position(700,95)
   
 }
 
@@ -32,13 +35,23 @@ function draw() {
     dog.addImage(dogImgHappy);
   }
 
+  fill(255,255,254);
+        textSize(15);
+        if(lastFed>=12){
+            text("Last Feed: "+lastFed%12 + "PM", 350,30 );
+        }else if(lastFed==0){
+            text("Last Fed : 12 AM",350,30);
+        }else{
+            text("Last Feed :"+lastFed + "AM",350,30);
+        }
+
   //text()
 
   drawSprites();
   //add styles here
   textSize(24);
   fill("black")
-  text("NOTE: Press UP_ARROW key tp feed Drago milk",200,200)
+  text("NOTE: Press UP_ARROW key to feed Drago milk",200,200)
   
 }
 
